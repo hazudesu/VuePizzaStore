@@ -6,27 +6,27 @@
       dark
       shrink-on-scroll
       prominent
+      src="https://picsum.photos/1920/1080?random"
       fade-img-on-scroll
       app
     >
       <template v-slot:img="{ props }">
         <v-img
           v-bind="props"
-          :src="require('@/assets/pizza.jpg')"
-          gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7) "
+          gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7)"
         ></v-img>
       </template>
 
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-toolbar-title> Pizzeria DANG </v-toolbar-title>
+      <v-toolbar-title>Title</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
       <template v-slot:extension>
         <v-tabs align-with-title>
-          <v-tab to="/"> Ordenar Pizzas </v-tab>
-          <v-tab to="/pupu" > Resumen de Ventas</v-tab>
+          <v-tab to="/">Tab 1</v-tab>
+          <v-tab to="/pupu" >Pupu</v-tab>
           <v-tab>Tab 3</v-tab>
         </v-tabs>
       </template>
@@ -48,8 +48,9 @@
     </v-footer>
   </v-app>
 </template>
-
 <script>
+//import HelloWorld from './components/HelloWorld';
+//import Pupu from './components/Pupu';
 
 export default {
   name: 'App',
