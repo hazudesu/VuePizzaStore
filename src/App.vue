@@ -25,7 +25,7 @@
 
       <template v-slot:extension>
         <v-tabs align-with-title>
-          <v-tab to="/"> Ordenar Pizzas </v-tab>
+          <v-tab to="/order"> Ordenar Pizzas </v-tab>
           <v-tab to="/pupu" > Resumen de Ventas</v-tab>
           <v-tab>Tab 3</v-tab>
         </v-tabs>
