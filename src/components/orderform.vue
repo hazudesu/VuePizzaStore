@@ -88,10 +88,39 @@
             </v-container>
         </v-item-group>
         <v-container fluid>
-            <v-row>
-                <v-item-group>
+            <v-row align-content="center">
+                <v-col
+                    cols="12"
+                    class="py-2"
+                >
+                    <v-btn-toggle
+                        v-model="icon"
+                        borderless
+                    >
+                        <v-btn value="left">
+                            <span class="hidden-sm-and-down">Atras</span>
+                            <v-icon right>
+                                mdi-format-align-left
+                            </v-icon>
+                        </v-btn>
+                        <v-btn value="center">
+                            <span class="hidden-sm-and-down">Otra Pizza</span>
 
-                </v-item-group>
+                            <v-icon right>
+                                mdi-format-align-center
+                            </v-icon>
+                        </v-btn>
+
+                        <v-btn value="right">
+                            <span class="hidden-sm-and-down">Listo</span>
+
+                            <v-icon right>
+                                mdi-format-align-right
+                            </v-icon>
+                        </v-btn>
+
+                    </v-btn-toggle>
+                </v-col>
             </v-row>
         </v-container>
 
