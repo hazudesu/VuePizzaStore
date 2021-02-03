@@ -2,7 +2,7 @@
     <v-container fluid>
         <v-card
             min-width="700px"
-            min-height="500px"
+            min-height="600px"
         >
             <!-- <v-card-title
                 class="justify-center"

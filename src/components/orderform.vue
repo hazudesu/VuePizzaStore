@@ -1,25 +1,27 @@
-<template >
+<template>
     <v-card
         class="mx-auto my-12"
-    >
-        <v-card-title> Ordenar Pizzas  </v-card-title>
-        <v-card-subtitle v-bind="piz"> Pizza #{{piz}}</v-card-subtitle>
+        id="card-pedidos"
+        
+        >
+        <v-card-title class="titulo" > Ordenar Pizzas  </v-card-title>
 
         <v-item-group>
-            <v-container>
+            <v-container fluid class="row1">
                 <v-row
                     cols="12"
                     md="8"
+                    
                 >
                 <v-item>
                     <v-card
                         class="mx-auto my-12"
-                        min-height="300px"
+                        min-height="150px"
                         min-width="500px"
                     >
                     <v-img
                         src="@/assets/pizza1.jpg"
-                        height="200px"
+                        height="150px"
                         width="500px"
                     ></v-img>
                         <v-card-title> Seleccionar tamaño </v-card-title>
@@ -114,10 +116,7 @@
                                 mdi-format-align-left
                             </v-icon>
                         </v-btn>
-                        <v-btn 
-                            value="center"
-                            v-on:click="appendPizza"
-                        >
+                        <v-btn value="center">
                             <span class="hidden-sm-and-down">Otra Pizza</span>
 
                             <v-icon right>
@@ -125,10 +124,7 @@
                             </v-icon>
                         </v-btn>
 
-                        <v-btn 
-                            value="right"
-                            v-on:click="sendOrder"
-                        >
+                        <v-btn value="right">
                             <span class="hidden-sm-and-down">Listo</span>
 
                             <v-icon right>
@@ -145,10 +141,12 @@
     <v-container>
     </v-container>
 
+    <v-container class="elcontainer">
     <v-row align-content="center"
         :value="value"
         color="deep-purple"
         horizontal
+        class="linea"
     >
     <v-btn>
       <span>Atras</span>
@@ -179,53 +177,20 @@
     </v-dialog>
     
   </v-row>
+    </v-container>
 
     </v-card>
 </template>
 
 
 <script>
-import Order from '../classes/orden';
-import Pizza from '../classes/pizza';
-import {maptop, sizet} from '../classes/toppings';
-
-var currentOrder;
-var pizzas = [];
-
 export default {
-    
     data: () =>({
-        piz: 1,
         sizes: ["Pequeña" , "Mediana" , "Grande"],
         items: ["Jamon" , "Champiñones" , "Pimenton" , "Doble Queso" , "Aceitunas" , "Peperoni" , "Salchichon"],
         model: [],
         slsize: null,
-    }),
-    methods: {
-        appendPizza: function(){
-            var selTop = [];
-            for(var i = 0 ; i < this.model.length ; i++){
-                selTop.push(maptop.get(this.model[i]));
-            }
-            pizzas.push(new Pizza(sizet.get(this.slsize) , 0 , selTop));
-            console.log(JSON.stringify(pizzas));
-
-            this.model = [];
-            this.slsize = 0;
-            this.piz += 1;
-        },
-
-        sendOrder: function(){
-            var selTop = [];
-            for(var i = 0 ; i < this.model.length ; i++){
-                selTop.push(maptop.get(this.model[i]));
-            }
-            pizzas.push(new Pizza(sizet.get(this.slsize) , 0 , selTop));
-            
-            currentOrder = new Order('clientId' , 0 , pizzas);
-            console.log(JSON.stringify(currentOrder));
-        }
-    }
+    })
         
     
 }
@@ -233,5 +198,28 @@ export default {
 
 
 <style>
-    
+    .linea{
+        align-content: center;
+        padding-left: 40%;
+    }
+
+    .row1{
+        align-content:stretch;
+        padding-left: 100px;
+        padding-right: 100px;
+        background: url( 'https://media.istockphoto.com/vectors/vector-seamless-pattern-of-black-and-white-pizza-vector-id1142653274?b=1&k=6&m=1142653274&s=612x612&w=0&h=UcAd6onrNLGjG0cUQ_uDwy2GX6-aDXtjQa0kuetLL70=');
+    }
+
+    .titulo{
+        text-align: center;
+        padding-left: 50%;
+        background-color: black;
+        color: white;
+    }
+
+    .card-pedidos{
+        background-image: "@/assets/pizza.jpg";
+        background-color: hotpink;
+    }
+
 </style>
