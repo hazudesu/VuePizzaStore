@@ -28,6 +28,8 @@
           <v-tab to="/"> Homepage </v-tab>
           <v-tab to="/order"> Ordenar Pizzas </v-tab>
           <v-tab to="/sales" > Resumen de Ventas</v-tab>
+          <v-tab to="/sales"> Ventas x Size </v-tab>
+          <v-tab to="/sales"> Ventas x Topping </v-tab>
         </v-tabs>
       </template>
     </v-app-bar>

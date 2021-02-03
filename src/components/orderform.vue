@@ -162,11 +162,22 @@
       <v-icon>mdi-plus-box</v-icon>
     </v-btn>
 
-    <v-btn>
-      <span>Listo</span>
-
-      <v-icon>mdi-check-circle</v-icon>
-    </v-btn>
+    <v-dialog
+        v-model="dialog"
+        persistent
+        max-width="600"
+    >
+        <template v-slot:activator="{on , attrs}">
+            <v-btn
+                v-bind="attrs"
+                v-on="on"
+            >
+                <span>Listo</span>
+                <v-icon>mdi-check-circle</v-icon>
+            </v-btn>
+        </template>
+    </v-dialog>
+    
   </v-row>
 
     </v-card>
