@@ -305,7 +305,7 @@
 export default {
     data: () =>({
         sizes: ["Pequeña" , "Mediana" , "Grande"],
-        items: ["Jamon" , "Champiñones" , "Pimenton" , "Doble Queso" , "Aceitunas" , "Peperoni" , "Salchichon"],
+        items: ["Jamon" , "Champiñones" , "Pimenton" , "Doble queso" , "Aceitunas" , "Pepperoni" , "Salchichon"],
         model: [],
         slsize: null,
         piz:1,

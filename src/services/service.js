@@ -29,7 +29,7 @@
 
 
     postOrder(data) {
-        return http.post("/orders" , data);
+        return http.post("/orders/" , data);
     }
     
  }

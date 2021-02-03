@@ -24,9 +24,9 @@ var topMap = new Map();
 topMap.set("Jamon" , new Toppings("Jamon"));
 topMap.set("Champiñones" , new Toppings("Champinones"));
 topMap.set("Pimenton" , new Toppings("Pimenton"));
-topMap.set("Doble Queso" , new Toppings("Doble Queso"));
+topMap.set("Doble queso" , new Toppings("Doble queso"));
 topMap.set("Aceitunas" , new Toppings("Aceitunas"));
-topMap.set("Peperoni" , new Toppings("Peperoni"));
+topMap.set("Pepperoni" , new Toppings("Pepperoni"));
 topMap.set("Salchichon" , new Toppings("Salchichon"));
 
 export const maptop = topMap;
@@ -36,9 +36,9 @@ var topprice = new Map();
 topprice.set("Jamon", 4.0);
 topprice.set("Champinones" , 3.5);
 topprice.set("Pimenton" , 3.0);
-topprice.set("Doble Queso" , 4.0);
+topprice.set("Doble queso" , 4.0);
 topprice.set("Aceitunas" , 5.75);
-topprice.set("Peperoni" , 3.85);
+topprice.set("Pepperoni" , 3.85);
 topprice.set("Salchichon" , 6.25);
 
 export const tprices = topprice;
