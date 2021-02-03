@@ -160,6 +160,7 @@
 
     <v-btn
         v-on:click="appendPizza"
+        :disabled="slsize == null"
     >
       <v>Otra Pizza</v>
 
@@ -176,6 +177,7 @@
                 v-bind="attrs"
                 v-on="on"
                 v-on:click="sendOrder"
+                :disabled="slsize == null"
                 
             >
                 <span>Listo</span>
@@ -183,10 +185,81 @@
             </v-btn>
         </template>
 
-        <v-card>
+        <v-card fluid>
             <v-card-title class="headline">
                 Confirmacion de compra
             </v-card-title>
+                
+
+            <v-container fluid>
+                <v-row>
+                    <v-col
+                        v-for="(items , i) in pizzas"
+                        :key="i"
+                        cols="12"
+                    >
+
+                    <v-card
+                        max-width="600px"
+                    >
+                        <v-row>
+                            <v-col>
+                                <div class="d-flex flex-no-wrap justify-space-between">
+                            <div v-if="items.pizza_size === 'sm'">
+                                <v-card-title> Pequeña </v-card-title>
+                            </div>
+                            <div v-else-if="items.pizza_size === 'm'">
+                                <v-card-title> Mediana </v-card-title>
+                            </div>
+                            <div v-else-if="items.pizza_size === 'lg'">
+                                <v-card-title> Grande </v-card-title>
+                            </div>
+                        </div>
+                            </v-col>
+                            <v-col>
+                                <v-card-title
+                                    v-text="items.price"
+                                ></v-card-title>
+                            </v-col>
+                        </v-row>
+
+                        <v-container fluid>
+                            <v-row
+                                
+                            >
+                                <v-col
+                                    v-for="(tops , j) in items.toppings"
+                                    :key="j"
+                                >
+                                    <v-card>
+                                        <v-card-text
+                                            v-text="tops.name"
+                                        >
+
+                                        </v-card-text>
+                                    </v-card>
+                                </v-col>
+                            </v-row>
+                        </v-container>
+                    </v-card>
+
+                    </v-col>
+                    <v-col>
+                        <v-card>
+                            <v-row>
+                                <v-col>
+                                    <v-card-title>Total Orden</v-card-title>
+                                </v-col>
+                                <v-col>
+                                    <v-card-title
+                                        v-text="currentTotal"
+                                    ></v-card-title>
+                                </v-col>
+                            </v-row>
+                        </v-card>
+                    </v-col>
+                </v-row>
+            </v-container>
 
             <v-card-actions>
                 <v-spacer></v-spacer>
@@ -201,7 +274,7 @@
                 <v-btn
                     text
                     color="#43A047"
-                    @click="dialog = false"
+                    @click="confirmOrder"
                 >
                     Confirmar
                 </v-btn>
@@ -222,8 +295,12 @@
     import Order from '../classes/orden';
     import Pizza from '../classes/pizza';
     import {maptop, sizet} from '../classes/toppings';
+    import services from '../services/service';
+
+    var srv = new services();
     var currentOrder;
     var pizzas = [];
+    
 
 export default {
     data: () =>({
@@ -232,7 +309,9 @@ export default {
         model: [],
         slsize: null,
         piz:1,
-        dialog: false
+        dialog: false,
+        pizzas: pizzas,
+        currentTotal: 0
     }),
     methods: {
         appendPizza: function(){
@@ -240,21 +319,38 @@ export default {
             for(var i = 0 ; i < this.model.length ; i++){
                 selTop.push(maptop.get(this.model[i]));
             }
-            pizzas.push(new Pizza(sizet.get(this.slsize) , 0 , selTop));
-            console.log(JSON.stringify(pizzas));
+            var thPizza = new Pizza(sizet.get(this.slsize) , 0 , selTop);
+            pizzas.push(thPizza);
+            this.currentTotal += thPizza.getPrice();
+            //console.log(JSON.stringify(pizzas));
             this.model = [];
             this.slsize = 0;
             this.piz += 1;
         },
         sendOrder: function(){
-            var selTop = [];
+            /*var selTop = [];
             for(var i = 0 ; i < this.model.length ; i++){
                 selTop.push(maptop.get(this.model[i]));
             }
-            pizzas.push(new Pizza(sizet.get(this.slsize) , 0 , selTop));
+            pizzas.push(new Pizza(sizet.get(this.slsize) , 0 , selTop));*/
+
+            this.appendPizza();
             
+            
+        },
+
+        confirmOrder(){
+            this.dialog = false;
             currentOrder = new Order('clientId' , 0 , pizzas);
             console.log(JSON.stringify(currentOrder));
+            srv.postOrder(JSON.stringify(currentOrder));
+
+        },
+
+        resetOrders(){
+            this.piz = 0;
+            this.model = [];
+            this.slsize = null;
         }
     }
         
