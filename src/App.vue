@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar
       absolute
-      color="#6A76AB"
+      color="#d6562e"
       dark
       shrink-on-scroll
       prominent
@@ -13,7 +13,7 @@
         <v-img
           v-bind="props"
           :src="require('@/assets/pizza.jpg')"
-          gradient="to top right, rgba(100,115,201,.7), rgba(25,32,72,.7) "
+          gradient="to top right, rgba(214,86,46,.7), rgba(25,32,72,.7) "
         ></v-img>
       </template>
 
@@ -37,15 +37,44 @@
 
       <!-- Provides the application the proper gutter -->
       <v-container fluid>
-        
-        <!-- If using vue-router -->
         <router-view></router-view>
       </v-container>
     </v-main>
 
-    <v-footer app>
-      <!-- -->
-    </v-footer>
+  
+    <v-footer
+    dark
+    padless
+  >
+    <v-card
+      class="flex"
+      flat
+      tile
+    >
+      <v-card-title class="">
+        <strong class="subheading">¡Contáctanos por nuestras redes sociales!</strong>
+
+        <v-spacer></v-spacer>
+        <v-icon size="24px">mdi-instagram</v-icon>
+        <v-spacer></v-spacer>
+        <v-icon size="24px">mdi-twitter</v-icon>
+        <v-spacer></v-spacer>
+        <v-icon size="24px">mdi-twitch</v-icon>
+        <v-spacer></v-spacer>
+        <v-icon size="24px">mdi-microsoft-windows</v-icon>
+        <v-spacer></v-spacer>
+        <v-icon size="24px">mdi-youtube</v-icon>
+        <v-spacer></v-spacer>
+        <v-icon size="24px">mdi-discord</v-icon>
+     
+      </v-card-title>
+
+      <v-card-text class="py-2 white--text text-center">
+        {{ new Date().getFullYear() }} — <strong>VENEZUELA - DANG C.A</strong>
+      </v-card-text>
+    </v-card>
+  </v-footer>
+
   </v-app>
 </template>
 
@@ -63,3 +92,12 @@ export default {
   }),
 };
 </script>
+
+<style>
+  .card1{
+    background-color: #d6562e;
+  }
+  .py-2{
+    background-color: #d6562e;
+  }
+</style>

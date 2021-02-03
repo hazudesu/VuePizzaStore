@@ -2,11 +2,9 @@
     <v-card
         class="mx-auto my-12"
     >
-        <v-card-title> Ordenar Pizzas  </v-card-title>
+        <v-card-title > Ordenar Pizzas  </v-card-title>
 
-        <v-item-group
-            
-        >
+        <v-item-group>
             <v-container>
                 <v-row
                     cols="12"
@@ -15,9 +13,14 @@
                 <v-item>
                     <v-card
                         class="mx-auto my-12"
-                        max-height="400px"
-                        
+                        min-height="300px"
+                        min-width="500px"
                     >
+                    <v-img
+                        src="@/assets/pizza1.jpg"
+                        height="200px"
+                        width="500px"
+                    ></v-img>
                         <v-card-title> Seleccionar tamaño </v-card-title>
                         <v-container fluid>
                             <v-row align="left">
@@ -31,6 +34,7 @@
                                     label="Tamaño"
                                     :items="sizes"
                                 ></v-select>
+
                                 </v-col>
 
                             </v-row>
@@ -41,6 +45,8 @@
                 <v-item>
                     <v-card
                         class="mx-auto "
+                       
+                        min-width="300px"
                     >
                         <v-card-title> Seleccionar Toppings </v-card-title>
                         <v-list shaped>
@@ -87,11 +93,14 @@
                 </v-row>
             </v-container>
         </v-item-group>
-        <v-container fluid>
-            <v-row align-content="center">
+
+<!--         <v-container fluid>
+            
+            <v-row align="center" justify="center">
                 <v-col
                     cols="12"
                     class="py-2"
+                
                 >
                     <v-btn-toggle
                         v-model="icon"
@@ -122,7 +131,35 @@
                     </v-btn-toggle>
                 </v-col>
             </v-row>
-        </v-container>
+        </v-container> -->
+
+
+    <v-container>
+    </v-container>
+
+    <v-row align-content="center"
+        :value="value"
+        color="deep-purple"
+        horizontal
+    >
+    <v-btn>
+      <span>Atras</span>
+
+      <v-icon>mdi-arrow-left-circle</v-icon>
+    </v-btn>
+
+    <v-btn>
+      <v>Otra Pizza</v>
+
+      <v-icon>mdi-plus-box</v-icon>
+    </v-btn>
+
+    <v-btn>
+      <span>Listo</span>
+
+      <v-icon>mdi-check-circle</v-icon>
+    </v-btn>
+  </v-row>
 
     </v-card>
 </template>
@@ -131,7 +168,7 @@
 <script>
 export default {
     data: () =>({
-        sizes: ["Small" , "Medium" , "Large"],
+        sizes: ["Pequeña" , "Mediana" , "Grande"],
         items: ["Jamon" , "Champiñones" , "Pimenton" , "Doble Queso" , "Aceitunas" , "Peperoni" , "Salchichon"],
         model: [],
     })
