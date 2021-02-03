@@ -1,24 +1,27 @@
-<template >
+<template>
     <v-card
         class="mx-auto my-12"
-    >
-        <v-card-title > Ordenar Pizzas  </v-card-title>
+        id="card-pedidos"
+        
+        >
+        <v-card-title class="titulo" > Ordenar Pizzas  </v-card-title>
 
         <v-item-group>
-            <v-container>
+            <v-container fluid class="row1">
                 <v-row
                     cols="12"
                     md="8"
+                    
                 >
                 <v-item>
                     <v-card
                         class="mx-auto my-12"
-                        min-height="300px"
+                        min-height="150px"
                         min-width="500px"
                     >
                     <v-img
                         src="@/assets/pizza1.jpg"
-                        height="200px"
+                        height="150px"
                         width="500px"
                     ></v-img>
                         <v-card-title> Seleccionar tamaño </v-card-title>
@@ -138,10 +141,12 @@
     <v-container>
     </v-container>
 
+    <v-container class="elcontainer">
     <v-row align-content="center"
         :value="value"
         color="deep-purple"
         horizontal
+        class="linea"
     >
     <v-btn>
       <span>Atras</span>
@@ -161,6 +166,7 @@
       <v-icon>mdi-check-circle</v-icon>
     </v-btn>
   </v-row>
+    </v-container>
 
     </v-card>
 </template>
@@ -181,5 +187,28 @@ export default {
 
 
 <style>
-    
+    .linea{
+        align-content: center;
+        padding-left: 40%;
+    }
+
+    .row1{
+        align-content:stretch;
+        padding-left: 100px;
+        padding-right: 100px;
+        background: url( 'https://media.istockphoto.com/vectors/vector-seamless-pattern-of-black-and-white-pizza-vector-id1142653274?b=1&k=6&m=1142653274&s=612x612&w=0&h=UcAd6onrNLGjG0cUQ_uDwy2GX6-aDXtjQa0kuetLL70=');
+    }
+
+    .titulo{
+        text-align: center;
+        padding-left: 50%;
+        background-color: black;
+        color: white;
+    }
+
+    .card-pedidos{
+        background-image: "@/assets/pizza.jpg";
+        background-color: hotpink;
+    }
+
 </style>
