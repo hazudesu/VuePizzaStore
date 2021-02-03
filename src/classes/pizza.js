@@ -23,6 +23,10 @@ export default class Pizza {
         this.price = tPrice;
     }
 
+    getPrice(){
+        return this.price;
+    }
+
 
 
 }

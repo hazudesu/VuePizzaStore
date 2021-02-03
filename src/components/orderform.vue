@@ -144,8 +144,8 @@
     </v-container>
 
     <v-container class="elcontainer">
-    <v-row align-content="center"
-        :value="value"
+    <v-row 
+        
         color="deep-purple"
         horizontal
         class="linea"

@@ -24,7 +24,7 @@ export default class Order {
         var total = 0;
 
         for(var i = 0 ; i < this.pizzas.length ; i++){
-            total += this.pizzas[i].price;
+            total += this.pizzas[i].getPrice();
         }
 
 
