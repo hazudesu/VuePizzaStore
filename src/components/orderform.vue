@@ -30,6 +30,7 @@
                                     sm="8"
                                 >
                                 <v-select
+                                    v-model="slsize"
                                     outlined
                                     label="Tamaño"
                                     :items="sizes"
@@ -171,6 +172,7 @@ export default {
         sizes: ["Pequeña" , "Mediana" , "Grande"],
         items: ["Jamon" , "Champiñones" , "Pimenton" , "Doble Queso" , "Aceitunas" , "Peperoni" , "Salchichon"],
         model: [],
+        slsize: null,
     })
         
     
