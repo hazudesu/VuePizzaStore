@@ -5,6 +5,7 @@
         
         >
         <v-card-title class="titulo" > Ordenar Pizzas  </v-card-title>
+        <v-card-subtitle v-bind="piz" class="subtitulo"> Pizza #{{piz}}</v-card-subtitle>
 
         <v-item-group>
             <v-container fluid class="row1">
@@ -184,13 +185,43 @@
 
 
 <script>
+    import Order from '../classes/orden';
+    import Pizza from '../classes/pizza';
+    import {maptop, sizet} from '../classes/toppings';
+    var currentOrder;
+    var pizzas = [];
+
 export default {
     data: () =>({
         sizes: ["Pequeña" , "Mediana" , "Grande"],
         items: ["Jamon" , "Champiñones" , "Pimenton" , "Doble Queso" , "Aceitunas" , "Peperoni" , "Salchichon"],
         model: [],
         slsize: null,
-    })
+        piz:1
+    }),
+    methods: {
+        appendPizza: function(){
+            var selTop = [];
+            for(var i = 0 ; i < this.model.length ; i++){
+                selTop.push(maptop.get(this.model[i]));
+            }
+            pizzas.push(new Pizza(sizet.get(this.slsize) , 0 , selTop));
+            console.log(JSON.stringify(pizzas));
+            this.model = [];
+            this.slsize = 0;
+            this.piz += 1;
+        },
+        sendOrder: function(){
+            var selTop = [];
+            for(var i = 0 ; i < this.model.length ; i++){
+                selTop.push(maptop.get(this.model[i]));
+            }
+            pizzas.push(new Pizza(sizet.get(this.slsize) , 0 , selTop));
+            
+            currentOrder = new Order('clientId' , 0 , pizzas);
+            console.log(JSON.stringify(currentOrder));
+        }
+    }
         
     
 }
@@ -220,6 +251,11 @@ export default {
     .card-pedidos{
         background-image: "@/assets/pizza.jpg";
         background-color: hotpink;
+    }
+
+    .subtitulo{
+        text-align: center;
+        color: white;
     }
 
 </style>
