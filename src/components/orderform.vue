@@ -3,6 +3,7 @@
         class="mx-auto my-12"
     >
         <v-card-title> Ordenar Pizzas  </v-card-title>
+        <v-card-subtitle v-bind="piz"> Pizza #{{piz}}</v-card-subtitle>
 
         <v-item-group
             
@@ -104,7 +105,10 @@
                                 mdi-format-align-left
                             </v-icon>
                         </v-btn>
-                        <v-btn value="center">
+                        <v-btn 
+                            value="center"
+                            v-on:click="appendPizza"
+                        >
                             <span class="hidden-sm-and-down">Otra Pizza</span>
 
                             <v-icon right>
@@ -112,7 +116,10 @@
                             </v-icon>
                         </v-btn>
 
-                        <v-btn value="right">
+                        <v-btn 
+                            value="right"
+                            v-on:click="sendOrder"
+                        >
                             <span class="hidden-sm-and-down">Listo</span>
 
                             <v-icon right>
@@ -130,13 +137,47 @@
 
 
 <script>
+import Order from '../classes/orden';
+import Pizza from '../classes/pizza';
+import {maptop, sizet} from '../classes/toppings';
+
+var currentOrder;
+var pizzas = [];
+
 export default {
+    
     data: () =>({
-        sizes: ["Small" , "Medium" , "Large"],
+        piz: 1,
+        sizes: ["Pequeña" , "Mediana" , "Grande"],
         items: ["Jamon" , "Champiñones" , "Pimenton" , "Doble Queso" , "Aceitunas" , "Peperoni" , "Salchichon"],
         model: [],
         slsize: null,
-    })
+    }),
+    methods: {
+        appendPizza: function(){
+            var selTop = [];
+            for(var i = 0 ; i < this.model.length ; i++){
+                selTop.push(maptop.get(this.model[i]));
+            }
+            pizzas.push(new Pizza(sizet.get(this.slsize) , 0 , selTop));
+            console.log(JSON.stringify(pizzas));
+
+            this.model = [];
+            this.slsize = 0;
+            this.piz += 1;
+        },
+
+        sendOrder: function(){
+            var selTop = [];
+            for(var i = 0 ; i < this.model.length ; i++){
+                selTop.push(maptop.get(this.model[i]));
+            }
+            pizzas.push(new Pizza(sizet.get(this.slsize) , 0 , selTop));
+            
+            currentOrder = new Order('clientId' , 0 , pizzas);
+            console.log(JSON.stringify(currentOrder));
+        }
+    }
         
     
 }
