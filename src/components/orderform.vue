@@ -149,19 +149,23 @@
         horizontal
         class="linea"
     >
-    <v-btn>
+    <v-btn
+        to="/"
+    >
       <span>Atras</span>
 
       <v-icon>mdi-arrow-left-circle</v-icon>
     </v-btn>
 
-    <v-btn>
+    <v-btn
+        v-on:click="appendPizza"
+    >
       <v>Otra Pizza</v>
 
       <v-icon>mdi-plus-box</v-icon>
     </v-btn>
 
-    <v-dialog
+    <!-- <v-dialog
         v-model="dialog"
         persistent
         max-width="600"
@@ -170,12 +174,21 @@
             <v-btn
                 v-bind="attrs"
                 v-on="on"
+                v-on:click="sendOrder"
             >
                 <span>Listo</span>
                 <v-icon>mdi-check-circle</v-icon>
             </v-btn>
         </template>
-    </v-dialog>
+
+        <v-card>
+            <v-card-title class="headline">
+                Confirmacion de compra
+            </v-card-title>
+
+
+        </v-card>
+    </v-dialog> -->
     
   </v-row>
     </v-container>
@@ -197,7 +210,8 @@ export default {
         items: ["Jamon" , "Champiñones" , "Pimenton" , "Doble Queso" , "Aceitunas" , "Peperoni" , "Salchichon"],
         model: [],
         slsize: null,
-        piz:1
+        piz:1,
+        dialog: false
     }),
     methods: {
         appendPizza: function(){
