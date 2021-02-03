@@ -4,10 +4,11 @@
         id="card-pedidos"
         
         >
-        <v-card-title class="titulo" > Ordenar Pizzas  </v-card-title>
-        <v-card-subtitle v-bind="piz" class="subtitulo"> Pizza #{{piz}}</v-card-subtitle>
+        <v-card-title class="titulo justify-center" > Ordenar Pizzas  </v-card-title>
+        
 
         <v-item-group>
+            <v-card-subtitle v-bind="piz" class="subtitulo"> Pizza #{{piz}}</v-card-subtitle>
             <v-container fluid class="row1">
                 <v-row
                     cols="12"
@@ -165,7 +166,7 @@
       <v-icon>mdi-plus-box</v-icon>
     </v-btn>
 
-    <!-- <v-dialog
+    <v-dialog
         v-model="dialog"
         persistent
         max-width="600"
@@ -175,6 +176,7 @@
                 v-bind="attrs"
                 v-on="on"
                 v-on:click="sendOrder"
+                
             >
                 <span>Listo</span>
                 <v-icon>mdi-check-circle</v-icon>
@@ -186,9 +188,28 @@
                 Confirmacion de compra
             </v-card-title>
 
+            <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn
+                    text
+                    color="#D32F2F"
+                    @click="dialog = false"
+                >
+                    Cancelar
+                </v-btn>
+
+                <v-btn
+                    text
+                    color="#43A047"
+                    @click="dialog = false"
+                >
+                    Confirmar
+                </v-btn>
+            </v-card-actions>
+
 
         </v-card>
-    </v-dialog> -->
+    </v-dialog> 
     
   </v-row>
     </v-container>
@@ -256,8 +277,6 @@ export default {
     }
 
     .titulo{
-        text-align: center;
-        padding-left: 50%;
         background-color: black;
         color: white;
     }
@@ -269,7 +288,8 @@ export default {
 
     .subtitulo{
         text-align: center;
-        color: white;
+        color: rgb(5, 5, 5)  !important;
+        font-weight: bold;
     }
 
 </style>
