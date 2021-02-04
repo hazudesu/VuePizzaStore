@@ -16,7 +16,7 @@
                 <v-dialog
                     v-model="dialog"
                     max-width="800"
-                    hide-overlay
+                    
                     elevation="0"
                     persistent
                 >

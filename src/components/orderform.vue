@@ -168,7 +168,6 @@
     </v-btn>
 
     <v-btn
-        to="/order"
     >
       <span>Reiniciar</span>
 
@@ -206,7 +205,20 @@
             <v-card-title class="headline">
                 Confirmacion de compra
             </v-card-title>
-                
+            <v-container fluid>
+                <v-card
+                        max-width="600px"
+                        class="card2"
+                        
+                    >
+                        <v-card-title>
+                            Cedula:
+                        </v-card-title>
+                        <v-card-title
+                            v-text="cedula"
+                        ></v-card-title>
+                    </v-card>
+            </v-container>
 
             <v-container fluid class="topping">
                 <v-row>
@@ -216,6 +228,7 @@
                         :key="i"
                         cols="12"
                     >
+                    
 
                     <v-card
                         max-width="600px"
@@ -373,9 +386,12 @@ export default {
         },
 
         resetOrders(){
-            this.piz = 0;
+            this.piz = 1;
             this.model = [];
             this.slsize = null;
+            pizzas = [];
+            this.pizzas = [];
+            this.currentTotal = 0;
         }
     }
         
