@@ -160,6 +160,7 @@
         class="linea"
     >
     <v-btn
+    v-on:click="resetOrders"
         to="/"
     >
       <span>Salir</span>
@@ -168,6 +169,7 @@
     </v-btn>
 
     <v-btn
+    v-on:click="resetOrders"
     >
       <span>Reiniciar</span>
 
@@ -358,12 +360,13 @@ export default {
                 selTop.push(maptop.get(this.model[i]));
             }
             var thPizza = new Pizza(sizet.get(this.slsize) , 0 , selTop);
-            pizzas.push(thPizza);
+            this.pizzas.push(thPizza);
             this.currentTotal += thPizza.getPrice();
             //console.log(JSON.stringify(pizzas));
             this.model = [];
             this.slsize = 0;
             this.piz += 1;
+            
         },
         sendOrder: function(){
             /*var selTop = [];
@@ -379,22 +382,26 @@ export default {
 
         confirmOrder(){
             this.dialog = false;
-            currentOrder = new Order(this.cedula , 0 , pizzas);
+            currentOrder = new Order(this.cedula , 0 , this.pizzas);
             console.log(JSON.stringify(currentOrder));
             srv.postOrder(JSON.stringify(currentOrder));
 
         },
 
-        resetOrders(){
+        resetOrders(){           
             this.piz = 1;
             this.model = [];
+            this.cedula = null;
             this.slsize = null;
-            pizzas = [];
             this.pizzas = [];
-            this.currentTotal = 0;
+            this.currentTotal=0;
+            this.currentOrder=null;
+
         }
-    }
-        
+    },
+    mounted(){
+        this.resetOrders();
+    }    
     
 }
 </script>
