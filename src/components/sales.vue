@@ -1,10 +1,6 @@
 <template >
     <v-container fluid>
-        <v-btn
-            @click="seekOrders"
-        >
-            <span> Update </span>
-        </v-btn>
+        
 
         
         <v-data-table
@@ -122,23 +118,13 @@ export default {
                     this.dataSource = JSON.parse(JSON.stringify(response.data.orders));
                     console.log(this.dataSource)
                 });
-
-        },
-
-        seekDetail(){
-            this.mdataSource = [];
-            this.processed = [];
-            console.log(this.selected)
-
-            serv.getOrderDetail(this.selected)
-                .then(response => {
-                    this.mdataSource = JSON.parse(JSON.stringify(response.data.pizzas));
-                });
         }
-
     },
-   
+    mounted(){
+        this.seekOrders();
+    }
 }
+
 </script>
 <style >
     
