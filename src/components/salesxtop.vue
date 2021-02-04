@@ -48,9 +48,9 @@ export default {
                 text:"Price"
             }
         ],
-        tops: null,
+        tops: [],
         tps: ["Jamon" , "Champiñones" , "Pimenton" , "Doble queso" , "Aceitunas" , "Pepperoni" , "Salchichon"],
-        dataSource: null,
+        dataSource: [],
     
     }),
     methods: {
@@ -61,13 +61,9 @@ export default {
 
             serv.getSales_Topping(tpings)
                 .then(response => {
-                    this.dataSource = response.data.pizzas;
+                    this.dataSource = JSON.stringify(response.data.pizzas);
                     console.log(this.dataSource);
                 })
-            
-            
-
-
         }
     }
 }
