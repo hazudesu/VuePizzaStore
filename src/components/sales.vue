@@ -8,8 +8,7 @@
             :items="dataSource"
             v-model="selected"
             item-key="id"
-            
-             
+            @click:row="handleClick"
         >
             <template v-slot:item.action="{}">
                 <v-btn
@@ -118,6 +117,11 @@ export default {
                     this.dataSource = JSON.parse(JSON.stringify(response.data.orders));
                     console.log(this.dataSource)
                 });
+        }
+        ,
+        handleClick(row){
+            console.log(row.id);
+            this.dialog = true;
         }
     },
     mounted(){
