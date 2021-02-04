@@ -23,7 +23,7 @@
         </v-row>
         <v-data-table
             :headers="headers"
-            :items="dataSource"
+            :items="processed"
         >
         
 
@@ -34,6 +34,7 @@
 <script>
 import {maptop} from "../classes/toppings";
 import services from "../services/service";
+import dTable from "../classes/tbdata";
 var serv = new services();
 
 export default {
@@ -70,20 +71,24 @@ export default {
                 .then(response => {
                     this.dataSource = JSON.parse(JSON.stringify(response.data.pizzas));
                     console.log(this.dataSource);
+
+                    for(var i = 0 ; this.dataSource.length ; i++){
+                        if(this.dataSource[i].pizza_size == 'sm'){
+                            this.processed.push(new dTable("Pequeña" , this.dataSource[i].toppings , this.dataSource[i].price));
+                        }
+                            else if(this.dataSource[i].pizza_size == 'm'){
+                                this.processed.push(new dTable("Mediana" , this.dataSource[i].toppings , this.dataSource[i].price));
+                            }
+                            else {
+                                this.processed.push(new dTable("Grande" , this.dataSource[i].toppings , this.dataSource[i].price));
+                            }
+                            
+                    }
+
                 })
 
-            
         },
-        sizeClass(item){
-            if(item.pizza_size == 'sm'){
-                return 'Pequeña'
-            }
-            else if(item.pizza_size == 'm'){
-                return 'Mediana';
-            }
-            else
-                return 'Grande';
-        }
+
     }
 }
 </script>

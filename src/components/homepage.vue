@@ -26,7 +26,7 @@
             >
                 <v-btn
                     x-large
-                    color="#F4511E"
+                    color="#d6562e"
                     elevation="20"
                     to="/order"
                 >

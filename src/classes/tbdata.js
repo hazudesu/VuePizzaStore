@@ -1,12 +1,12 @@
 export default class tableData{
 
     constructor(size , topps , price){
-        this.size = size;
-        this.topps = topps;
+        this.pizza_size = size;
+        this.toppings = topps;
         this.price = price;
     }
 
-    
+
 
 
 
