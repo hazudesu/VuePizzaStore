@@ -1,10 +1,6 @@
 <template >
     <v-container fluid>
-        <v-btn
-            @click="seekOrders"
-        >
-            <span> Update </span>
-        </v-btn>
+        
 
         
         <v-data-table
@@ -54,16 +50,13 @@ export default {
                     this.dataSource = JSON.parse(JSON.stringify(response.data.orders));
                     console.log(this.dataSource)
                 });
-
-            
-            
-
-
         }
-
     },
-   
+    mounted(){
+        this.seekOrders();
+    }
 }
+
 </script>
 <style >
     
