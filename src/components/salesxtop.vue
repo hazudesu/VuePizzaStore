@@ -23,7 +23,9 @@
         </v-row>
         <v-data-table
             :headers="headers"
+            :items="dataSource"
         >
+        
 
         </v-data-table>
     </v-container>
@@ -39,18 +41,23 @@ export default {
     data: ()=> ({
         headers: [
             {
-                text:"Pizza Size"            
+                text:"Pizza Size",
+                value: 'pizza_size'
+                            
             },
             {
-                text:"Toppings"
+                text:"Toppings",
+                value: 'toppings'
             },
             {
-                text:"Price"
+                text:"Price",
+                value:'price'
             }
         ],
         tops: [],
         tps: ["Jamon" , "Champiñones" , "Pimenton" , "Doble queso" , "Aceitunas" , "Pepperoni" , "Salchichon"],
         dataSource: [],
+        processed: []
     
     }),
     methods: {
@@ -61,9 +68,21 @@ export default {
 
             serv.getSales_Topping(tpings)
                 .then(response => {
-                    this.dataSource = JSON.stringify(response.data.pizzas);
+                    this.dataSource = JSON.parse(JSON.stringify(response.data.pizzas));
                     console.log(this.dataSource);
                 })
+
+            
+        },
+        sizeClass(item){
+            if(item.pizza_size == 'sm'){
+                return 'Pequeña'
+            }
+            else if(item.pizza_size == 'm'){
+                return 'Mediana';
+            }
+            else
+                return 'Grande';
         }
     }
 }
