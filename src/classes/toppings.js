@@ -6,6 +6,10 @@ export default class Toppings {
         this.name = name;
     }
 
+    getName(){
+        return this.name;
+    }
+
 
 }
 

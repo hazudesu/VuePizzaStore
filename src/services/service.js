@@ -1,17 +1,14 @@
-/** Services para la conexion del front end 
- *  con la API en DJANGO **/ 
+/** Services para la conexion del front end
+ *  con la API en DJANGO **/
 
- //const axios = require('axios').default;
- import http from "../http-common";
+//const axios = require('axios').default;
+import http from "../http-common";
 
-
- export default class apiService {
-
-
+export default class apiService {
     /* GET METHODS */
 
     getOrderList() {
-        console.log(http.get('/orders'))
+        console.log(http.get("/orders"));
     }
 
     getOrderDetail(id) {
@@ -19,19 +16,15 @@
     }
 
     getSales_Topping(topping) {
-        console.log(http.get(`/ordersbytop/${topping}`));
+        //var data;
+        return http.get(`/ordersbytop/${topping}/`);
     }
 
     getSales_Size(size) {
         console.log(http.get(`/ordersbysize/${size}`));
     }
 
-
-
     postOrder(data) {
-        return http.post("/orders/" , data);
+        return http.post("/orders/", data);
     }
-    
- }
-
-
+}
