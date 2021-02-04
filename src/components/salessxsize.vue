@@ -23,12 +23,19 @@
         </v-row>
         <v-data-table
             :headers="headers"
+            :items="processed"
         >
 
         </v-data-table>
     </v-container>
 </template>
 <script>
+import services from "../services/service";
+import dTable from "../classes/tbdata";
+import {sizet} from "../classes/toppings";
+
+var serv = new services();
+
 export default {
     data: ()=> ({
         headers: [
@@ -45,12 +52,34 @@ export default {
                 value: 'price'
             }
         ],
-        szs: ["Pequeña" , "Mediana" , "Grande"]
+        szs: ["Pequeña" , "Mediana" , "Grande"],
+        dataSource: [],
+        processed: [],
+        sizes: null
     
     }),
     methods: {
         seekResults(){
-            
+            var sizeTag = sizet.get(this.sizes);
+
+            serv.getSales_Size(sizeTag)
+                .then(response =>{
+                    this.dataSource = JSON.parse(JSON.stringify(response.data.pizzas));
+
+                    for(var i = 0 ; this.dataSource.length ; i++){
+                        if(this.dataSource[i].pizza_size == 'sm'){
+                            this.processed.push(new dTable("Pequeña" , this.dataSource[i].toppings , this.dataSource[i].price));
+                        }
+                            else if(this.dataSource[i].pizza_size == 'm'){
+                                this.processed.push(new dTable("Mediana" , this.dataSource[i].toppings , this.dataSource[i].price));
+                            }
+                            else {
+                                this.processed.push(new dTable("Grande" , this.dataSource[i].toppings , this.dataSource[i].price));
+                            }
+                            
+                    }
+        
+                })
         }
 
     }

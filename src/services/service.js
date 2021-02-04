@@ -21,7 +21,7 @@ export default class apiService {
     }
 
     getSales_Size(size) {
-        console.log(http.get(`/ordersbysize/${size}/`));
+        return http.get(`/ordersbysize/${size}/`);
     }
 
     postOrder(data) {
