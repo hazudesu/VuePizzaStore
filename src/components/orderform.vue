@@ -2,11 +2,20 @@
     <v-card
         class="mx-auto my-12"
         id="card-pedidos"
-        
         >
+       
         <v-card-title class="titulo justify-center" > Ordenar Pizzas  </v-card-title>
-        
 
+        <v-text-field
+            class="cedula"
+            label="Cedula"
+            v-model="message"
+            outlined
+            clearable
+
+            type="text"
+        ></v-text-field>
+      
         <v-item-group>
             <v-card-subtitle v-bind="piz" class="subtitulo"> Pizza #{{piz}}</v-card-subtitle>
             <v-container fluid class="row1">
@@ -70,7 +79,7 @@
                                         v-else
                                         :key="`item-${i}`"
                                         :value="item"
-                                        active-class="deep-purple--text text--accent-4"
+                                        active-class="orange darken-3"
                                     >
                                         <template v-slot:default="{ active }">
                                             <v-list-item-content>
@@ -80,7 +89,7 @@
                                             <v-list-item-action>
                                                 <v-checkbox
                                                     :input-value="active"
-                                                    color="deep-purple accent-4"
+                                                    color="black"
                                                 >
 
                                                 </v-checkbox>
@@ -153,9 +162,17 @@
     <v-btn
         to="/"
     >
-      <span>Atras</span>
+      <span>Salir</span>
 
       <v-icon>mdi-arrow-left-circle</v-icon>
+    </v-btn>
+
+    <v-btn
+        to="/order"
+    >
+      <span>Reiniciar</span>
+
+      <v-icon>mdi-redo-variant</v-icon>
     </v-btn>
 
     <v-btn
@@ -191,9 +208,10 @@
             </v-card-title>
                 
 
-            <v-container fluid>
+            <v-container fluid class="topping">
                 <v-row>
                     <v-col
+                        class="rou"
                         v-for="(items , i) in pizzas"
                         :key="i"
                         cols="12"
@@ -201,6 +219,8 @@
 
                     <v-card
                         max-width="600px"
+                        class="card2"
+                        
                     >
                         <v-row>
                             <v-col>
@@ -213,6 +233,7 @@
                             </div>
                             <div v-else-if="items.pizza_size === 'lg'">
                                 <v-card-title> Grande </v-card-title>
+                               
                             </div>
                         </div>
                             </v-col>
@@ -230,15 +251,18 @@
                                 <v-col
                                     v-for="(tops , j) in items.toppings"
                                     :key="j"
+                                    
                                 >
                                     <v-card>
                                         <v-card-text
+                                            class="items"
                                             v-text="tops.name"
                                         >
-
+                                            
                                         </v-card-text>
                                     </v-card>
                                 </v-col>
+
                             </v-row>
                         </v-container>
                     </v-card>
@@ -362,7 +386,7 @@ export default {
 <style>
     .linea{
         align-content: center;
-        padding-left: 40%;
+        padding-left: 30%;
     }
 
     .row1{
@@ -379,7 +403,6 @@ export default {
 
     .card-pedidos{
         background-image: "@/assets/pizza.jpg";
-        background-color: hotpink;
     }
 
     .subtitulo{
@@ -388,4 +411,28 @@ export default {
         font-weight: bold;
     }
 
+    .topping{
+        
+        background: url( 'https://media.istockphoto.com/vectors/vector-seamless-pattern-of-black-and-white-pizza-vector-id1142653274?b=1&k=6&m=1142653274&s=612x612&w=0&h=UcAd6onrNLGjG0cUQ_uDwy2GX6-aDXtjQa0kuetLL70=');
+    
+    }
+
+    .items{
+        background-color: #d6562e;
+        text-decoration-color: black;
+        color: black;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 25;
+        text-align: center;
+    
+    }
+    
+    .rou{
+        color: #d6562e;
+    }
+
+    .cedula{
+        align-content: center;
+    }
 </style>
