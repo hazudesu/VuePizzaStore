@@ -195,7 +195,7 @@
                 v-bind="attrs"
                 v-on="on"
                 v-on:click="sendOrder"
-                :disabled="slsize == null"
+                :disabled="slsize == null || cedula == null"
                 
             >
                 <span>Listo</span>
