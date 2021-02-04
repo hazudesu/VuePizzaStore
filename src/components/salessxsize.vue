@@ -64,6 +64,9 @@ export default {
 
             serv.getSales_Size(sizeTag)
                 .then(response =>{
+                    this.dataSource = [];
+                    this.processed = [];
+
                     this.dataSource = JSON.parse(JSON.stringify(response.data.pizzas));
 
                     for(var i = 0 ; this.dataSource.length ; i++){

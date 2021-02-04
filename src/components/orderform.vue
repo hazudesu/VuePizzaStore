@@ -9,7 +9,7 @@
         <v-text-field
             class="cedula"
             label="Cedula"
-            v-model="message"
+            v-model="cedula"
             outlined
             clearable
 
@@ -335,7 +335,8 @@ export default {
         piz:1,
         dialog: false,
         pizzas: pizzas,
-        currentTotal: 0
+        currentTotal: 0,
+        cedula: null
     }),
     methods: {
         appendPizza: function(){
@@ -365,7 +366,7 @@ export default {
 
         confirmOrder(){
             this.dialog = false;
-            currentOrder = new Order('clientId' , 0 , pizzas);
+            currentOrder = new Order(this.cedula , 0 , pizzas);
             console.log(JSON.stringify(currentOrder));
             srv.postOrder(JSON.stringify(currentOrder));
 

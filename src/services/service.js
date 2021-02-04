@@ -8,11 +8,11 @@ export default class apiService {
     /* GET METHODS */
 
     getOrderList() {
-        console.log(http.get("/orders"));
+        return http.get("/orders/");
     }
 
     getOrderDetail(id) {
-        console.log(http.get(`/orders/${id}`));
+        return http.get(`/orders/${id}/`);
     }
 
     getSales_Topping(topping) {

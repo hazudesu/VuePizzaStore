@@ -69,6 +69,9 @@ export default {
 
             serv.getSales_Topping(tpings)
                 .then(response => {
+                    this.dataSource = [];
+                    this.processed = [];
+                    
                     this.dataSource = JSON.parse(JSON.stringify(response.data.pizzas));
                     console.log(this.dataSource);
 
@@ -87,9 +90,11 @@ export default {
 
                 })
 
-        },
+        }
 
     }
+        
+    
 }
 </script>
 <style >
