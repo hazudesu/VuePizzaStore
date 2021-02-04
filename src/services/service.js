@@ -5,6 +5,7 @@
  import http from "../http-common";
 
 
+
  export default class apiService {
 
 
@@ -19,7 +20,14 @@
     }
 
     getSales_Topping(topping) {
-        console.log(http.get(`/ordersbytop/${topping}`));
+        //var data;
+
+        return http.get(`/ordersbytop/${topping}`);
+            
+            
+        
+            
+    
     }
 
     getSales_Size(size) {
